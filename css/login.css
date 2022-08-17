@@ -1,0 +1,31 @@
+body {
+    background-color: rgb(248, 249, 250);
+}
+
+.maincont{
+    width: 60%;
+    margin: 2% auto;
+    border-radius: 3%;
+    box-shadow: -20px 13px 24px 8px #000;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content:center;
+    background-color: rgba(218, 225, 233, 0.294);
+}
+
+.form-login{
+    margin: 5% auto;
+}
+.inpss{
+    width: 100%;
+    margin: 2.5% auto;
+}
+.ineml{
+    width: 100%;
+    margin: 2.5% auto;
+}
+.logimg{
+    width: 100%;
+    border-radius: 3%;
+}
