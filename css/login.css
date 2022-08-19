@@ -15,7 +15,7 @@ body {
 }
 
 .form-login{
-    margin: 5% auto;
+    margin: 5%;
 }
 .inpss{
     width: 100%;
@@ -28,4 +28,13 @@ body {
 .logimg{
     width: 100%;
     border-radius: 3%;
+}
+
+.dvForm{
+    width: 100%;
+    padding: 0% 35%;
+    box-sizing: border-box;
+}
+.form-login-submit{
+    align-content: right;
 }

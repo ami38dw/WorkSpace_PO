@@ -1,11 +1,13 @@
 .contMain{
     display: flex;
     flex-wrap: wrap;
+    width: 90%;
+    margin: 0px auto;
 }
 .card{
-    width: 49%;
+    width: 45%;
     height: auto;
-    margin: 10px 5px;
+    margin: 10px 10px;
     border: 2px solid rgb(48, 2, 2);
     border-radius: 8px;
     display: flex;
@@ -35,13 +37,13 @@
 }
 
 .cardTxt{
-    width: 100%;
+    width: 95%;
     margin: 5px 10px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .cardSoled{
     width: 40%;
-    margin: 10px 60%;
+    margin: 10px 56%;
     color: rgb(50, 46, 59);
 }
 .cardCost{
