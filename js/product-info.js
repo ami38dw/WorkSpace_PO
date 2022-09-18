@@ -10,7 +10,9 @@ let scoreCmmt = undefined;
 let estrellasString = '';
 let formBtn = document.getElementById('formBtn');
 let newComment = document.getElementById('newComment');
-console.log(newComment);
+let puntuacion = document.getElementById('cmmPuntuacion');
+let fecha = new Date();
+console.log(fecha);
 
 function mostrarEstrellas(score) {
     for (let i=1; i<=score; i++ ){
@@ -32,7 +34,25 @@ function mostrarComentarios(comentarios) {
         estrellasString = '';
     });
     cmBox.innerHTML = cmToAppend
-}
+};
+
+function agregarobjetoJS(arrayComentarios) {
+    let product = localStorage.getItem('ProdID');
+    let score = puntuacion.value;
+    let description = `${newComment.value}`;
+    let user = `${localStorage.getItem('usrName')}`;
+    let dateTime = `${fecha.getDate} ${fecha.getHours}:${fecha.getMinutes}:${fecha.getSeconds}`;
+
+    
+    let obj = {
+        "product": product,
+        "score": score,
+        "description": description,
+        "user": user,
+        "dateTime": dateTime
+    }
+    arrayComentarios.push(obj);
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     fetch(PRODUCT_URL)
@@ -67,7 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-// formBtn.addEventListener('click', (e) => {
-//     e.preventDefault
-//     comentarios.push(newComment.value)
-// })
+formBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    agregarobjetoJS(comentarios)
+    console.log(comentarios)
+    // No dimos como agregar los objetos a una api, pero se agrega a la lista de los comentarios en la consola 
+})
