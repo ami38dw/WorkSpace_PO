@@ -34,6 +34,7 @@ function mostrarComentarios(comentarios) {
         estrellasString = '';
     });
     cmBox.innerHTML = cmToAppend
+    cmToAppend = ``;
 };
 
 function agregarObjetoJS(arrayComentarios) {
@@ -89,7 +90,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 formBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    agregarObjetoJS(comentarios)
-    console.log(comentarios)
-    // No dimos como agregar los objetos a una api, pero se agrega a la lista de los comentarios en la consola 
+    let copiaCmm = comentarios;
+    agregarObjetoJS(copiaCmm);
+    comentarios = [];
+    comentarios = copiaCmm;
+    mostrarComentarios(comentarios);
 })
