@@ -36,13 +36,13 @@ function mostrarComentarios(comentarios) {
     cmBox.innerHTML = cmToAppend
 };
 
-function agregarobjetoJS(arrayComentarios) {
+function agregarObjetoJS(arrayComentarios) {
     let product = localStorage.getItem('ProdID');
     let score = puntuacion.value;
     let description = `${newComment.value}`;
     let user = `${localStorage.getItem('usrName')}`;
-    let dateTime = `${fecha.getDate} ${fecha.getHours}:${fecha.getMinutes}:${fecha.getSeconds}`;
-
+    let dateTime = `${fecha.getFullYear()}-${fecha.getMonth()}-${fecha.getDay()} ${fecha.getHours()}:${fecha.getMinutes()}:${fecha.getSeconds()}`;
+    2021-09-15
     
     let obj = {
         "product": product,
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 formBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    agregarobjetoJS(comentarios)
+    agregarObjetoJS(comentarios)
     console.log(comentarios)
     // No dimos como agregar los objetos a una api, pero se agrega a la lista de los comentarios en la consola 
 })
