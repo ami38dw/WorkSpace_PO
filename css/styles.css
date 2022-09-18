@@ -13,6 +13,13 @@ nav a {
   text-decoration: none;
 }
 
+.usrName{
+  width: auto;
+  margin: 0px;
+  padding: 0px;
+  color: #6c757d;
+  box-sizing: border-box;
+}
 .bd-placeholder-img {
   font-size: 1.125rem;
   text-anchor: middle;
@@ -187,4 +194,69 @@ a.custom-card:hover {
 
 .checked {
   color: orange;
+}
+
+.prod-conteiner{
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+}
+.prdImgs{
+  width: 50%;
+  margin: 10px 15px;
+  box-sizing: border-box;
+}
+.imgPpal{
+  width: 100%;
+}
+.imgSec{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+.img{
+  width: 100%;
+}
+
+.img-sec{
+  width: 33%;
+}
+.description{
+  width: 40%;
+ margin: 10px; 
+}
+.commentBox{
+  width: 80%;
+  height: auto;
+  margin: 5px 10%;
+  /* background-color: rgba(0, 0, 0, 0.056); */
+}
+
+.comment{
+  width: 100%;
+  margin: 6px 0px;
+  padding: 3px;
+  border: solid 2px black;
+  border-radius: 10px;
+  background-color: rgba(33, 20, 20, 0.093);
+  box-sizing: border-box;
+}
+#newComment {
+  width: 80%;
+  margin: 0px 10%;
+  border-radius: 5px 20px;
+}
+.nwcmm{
+  margin: 50px 10% 5px 10%;
+}
+.dateCmmt{
+  margin: 0px 0px 0px 80%;
+}
+
+.submit-button{
+  margin: 5px 10px;
+}
+.scoreStars{
+  margin: 5px 5px 5px 10%;
 }

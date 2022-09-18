@@ -37,6 +37,22 @@
       </div>
     </div>
   </nav>
+  <div class='filterBar'>
+    <div class='filterElements'>
+      <form class="filterForm">
+        <label class="inptFilt">
+          Precio $: <input id="inpMin" type='number' placeholder="Ingrese rango minimo"> -
+          <input id="inpMax" type='number' placeholder="Ingrese rango maximo">
+        </label>
+        <button type="submit" class="btnFiltro" id="btnF">Filtrar</button>
+      </form> 
+      <span>Orden <button type="button" class="btnFiltro" id="btnD">Decreciente</button>
+        <button type="button" class="btnFiltro" id="btnC">Creciente</button>
+        <button type="button" class="btnFiltro" id="btnRel">Relevancia</button>
+        <button type="submit" class="btnFiltro" id="btnL">Limpiar</button>
+      </span> 
+    </div>
+  </div>
   <main class="pb-5 container">
     <div class="container contMain">
       <!-- <div class="card">
