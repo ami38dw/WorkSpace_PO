@@ -11,8 +11,5 @@ document.addEventListener("DOMContentLoaded", function(){
         localStorage.setItem("catID", 103);
         window.location = "products.html"
     });
-    
-    let userBox = document.querySelector('#usrName');
-    userBox.innerHTML = localStorage.getItem('usrName');
     // console.log(localStorage.getItem('user'));
 });

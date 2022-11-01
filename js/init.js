@@ -39,3 +39,26 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+let userBox = document.querySelector('#usrName');
+userBox.innerHTML = `${localStorage.getItem('usrName')}`;
+userBox.setAttribute('class', 'nav-button');
+
+document.addEventListener('DOMContentLoaded', () => {
+  let miCarrito = document.querySelector('#mi-carrito');
+  miCarrito.addEventListener('click', () => {
+    window.location = 'cart.html'
+  });
+
+  let miPerfil = document.querySelector('#mi-perfil');
+  miPerfil.addEventListener('click', () => {
+    window.location = 'my-profile.html'
+  });
+
+  let cerrarSesion = document.querySelector('#cerrar-sesion');
+  cerrarSesion.addEventListener('click', () => {
+    window.location = 'index.html';
+    localStorage.setItem('usrName', '');
+    localStorage.setItem('miCarrito', '');
+  });
+});

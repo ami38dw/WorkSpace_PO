@@ -13,6 +13,10 @@ nav a {
   text-decoration: none;
 }
 
+.flechita{
+display: flex;
+align-items: center;
+}
 .usrName{
   width: auto;
   margin: 0px;
@@ -20,6 +24,7 @@ nav a {
   color: #6c757d;
   box-sizing: border-box;
 }
+
 .bd-placeholder-img {
   font-size: 1.125rem;
   text-anchor: middle;
@@ -201,6 +206,23 @@ a.custom-card:hover {
   flex-direction: row-reverse;
   flex-wrap: wrap;
 }
+.prod-related{
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  height: auto;
+  margin: 15px auto;
+  padding: 8px;
+  box-sizing: border-box;
+  background-color: rgba(145, 138, 138, 0.124);
+}
+.prodRel{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0px 10px;
+}
 .prdImgs{
   width: 50%;
   margin: 10px 15px;
@@ -226,6 +248,8 @@ a.custom-card:hover {
   width: 40%;
  margin: 10px; 
 }
+
+
 .commentBox{
   width: 80%;
   height: auto;
@@ -239,7 +263,7 @@ a.custom-card:hover {
   padding: 3px;
   border: solid 2px black;
   border-radius: 10px;
-  background-color: rgba(33, 20, 20, 0.093);
+  background-color: rgba(145, 138, 138, 0.124);
   box-sizing: border-box;
 }
 #newComment {

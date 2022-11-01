@@ -1,0 +1,41 @@
+.container{
+    width: 100%;
+}
+
+.miCarrito{
+    width: 100%;
+    height: auto;
+    margin: 20px 0px;
+    border: 3px solid rgba(54, 50, 50, 0.883);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0px 10px 12px 7px rgba(0, 0, 0, 0.569);
+    background-color: rgba(33, 20, 20, 0.115);
+};
+
+#tCarrito{
+    justify-content: center;
+};
+
+ @media (max-width: 780px){
+   .tabImg{
+    display: none;
+   }
+};
+
+#del-prod{
+    position: relative;
+}
+#confirm-prod{
+    position: relative;
+    margin: 0px 0px 10px 20px;
+}
+.oculto{
+    display: none;
+    visibility: hidden;
+}
+#buy-prod{
+    margin: 15px 30%;
+}
+

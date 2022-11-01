@@ -12,7 +12,9 @@ let formBtn = document.getElementById('formBtn');
 let newComment = document.getElementById('newComment');
 let puntuacion = document.getElementById('cmmPuntuacion');
 let fecha = new Date();
-console.log(fecha);
+let productInfo = undefined;
+let prodRelacionados = document.getElementById('prod-related');
+// console.log(prodRelacionados);
 
 function mostrarEstrellas(score) {
     for (let i=1; i<=score; i++ ){
@@ -55,11 +57,29 @@ function agregarObjetoJS(arrayComentarios) {
     arrayComentarios.push(obj);
 };
 
+function setProdID(id) {
+    localStorage.setItem("ProdID", id);
+    window.location = "product-info.html"
+};
+
+function mostrarProdRelacionados(data){
+    let relToAppend = `<h3>Productos relacionados</h3>`;
+    data.relatedProducts.forEach(element => {
+        // console.log(data);
+        relToAppend += `
+        <div class='card prodRel' id='prod-Rel-${element.id}' onclick="setProdID(${element.id})"> 
+        <h4>${element.name}</h4>
+        <img class="img-sec" src="${element.image}">
+        </div>`
+    });
+    prodRelacionados.innerHTML = relToAppend
+};
 document.addEventListener('DOMContentLoaded', () => {
     fetch(PRODUCT_URL)
     .then(response => response.json())
     .then(data => {
         console.log(data)
+        productInfo = data;
         contenedor.innerHTML = `
         <div class='description'>
             <h2>${data.name}</h2>
@@ -75,14 +95,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 <img class="img-sec" src="${data.images[3]}">
             </div>
         </div>    
+        
+        <div class="d-grid">
+        <button type="button" class="btn btn-outline-secondary" id="btnBuy">
+        <img src="https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../releases/preview/2013/png/iconmonstr-shopping-cart-23.png&r=0&g=0&b=0" alt="icon" width="5%">
+        Agregar al carrito</button>
+        </div>
         `;
 
         fetch(PRODUCT_URL_COMMENTS)
         .then(response => response.json())
         .then(cmmt => {
-            console.log(cmmt)
+            // console.log(cmmt)
             comentarios = cmmt
             mostrarComentarios(comentarios);
+        });
+        mostrarProdRelacionados(data);
+        
+        let soledBtn = document.querySelector('#btnBuy')
+        soledBtn.addEventListener('click', () => {
+            let miCarrito = JSON.parse(localStorage.getItem('miCarrito'));
+            nuevoArtc = {"id": data.id,
+            "name":`${data.name}`,
+            "count":1,
+            "unitCost":data.cost,
+            "currency":`${data.currency}`,
+            "image":`${data.images[0]}`},
+            miCarrito.push(nuevoArtc);
+
+            localStorage.setItem('miCarrito', null)
+            localStorage.setItem('miCarrito', JSON.stringify(miCarrito))
+            console.log(miCarrito);
         });
     });
 
@@ -95,4 +138,5 @@ formBtn.addEventListener('click', (e) => {
     comentarios = [];
     comentarios = copiaCmm;
     mostrarComentarios(comentarios);
-})
+}) 
+

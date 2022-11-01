@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function(){
     .then(categories => {   
 
         for (artc of categories.products) {
-            console.log(artc)
+            // console.log(artc)
         //     divCont.innerHTML += `
         //     <div class="card" onclick="setProdID(${artc.id})">
         //         <img class='cardImg' src="${artc.image}">
@@ -61,11 +61,12 @@ document.addEventListener('DOMContentLoaded', function(){
     })
 
     .then(btnFilter.addEventListener('click', (e) => {
-        if ((inpmax.value !== null) && (inpmin.value !== null)){
+        if ((inpmax.value !== undefined) || (inpmin.value !== undefined)){
         e.preventDefault();
         productosArray = JSON.parse(localStorage.getItem('productosArray'));
         // console.log(productosArrayFiltrado)
-        productosArrayFiltrado = productosArray.filter(prod => (prod.cost >= inpmin.value) && (prod.cost <= inpmax.value))
+        productosArrayFiltrado = productosArray.filter(prod => ((prod.cost >= inpmin.value) ||
+        !inpmin.value) && ((prod.cost <= inpmax.value) || (!inpmax.value)))
         showArtcs(productosArrayFiltrado)
     } else {
         showArtcs(productosArray)
@@ -135,3 +136,15 @@ document.addEventListener('DOMContentLoaded', function(){
     // }))
 });
 
+// -----------------------------------------------------------------------------------
+
+let CART_INFO_URL_USER = "https://japceibal.github.io/emercado-api/user_cart/25801.json";
+let miCarrito = undefined;
+
+fetch(CART_INFO_URL_USER)
+.then(response => response.json())
+.then(data => {
+    console.log(data);
+    miCarrito = data.articles;
+    localStorage.setItem('miCarrito', JSON.stringify(miCarrito))
+});

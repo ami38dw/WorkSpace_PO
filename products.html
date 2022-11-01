@@ -10,7 +10,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <link rel='stylesheet' href='css\products.css' type='text/css'>
+  <link rel='stylesheet' href='css/products.css' type='text/css'>
 </head>
 
 <body>
@@ -23,7 +23,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link active" href="home.html">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
@@ -32,6 +32,18 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
+            <div class="dropdown">
+              <button class="btn btn-secondary btn-sm dropdown-toggle flechita" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class='usrName'><h5 id="usrName"></h5></div>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <li><button class="dropdown-item" id="mi-carrito" type="button">Mi Carrito</button></li>
+                <li><button class="dropdown-item" id="mi-perfil" type="button" >Mi Perfil</button></li>
+                <li><button class="dropdown-item" id="cerrar-sesion" type="button">Cerrar sesión</button></li>
+              </ul>
+            </div>
+
+
           </li>
         </ul>
       </div>

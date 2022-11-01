@@ -9,6 +9,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href='css/cart.css' rel='stylesheet'>
 </head>
 
 <body>
@@ -21,7 +22,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link active" href="home.html">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
@@ -30,6 +31,18 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
+            <div class="dropdown">
+              <button class="btn btn-secondary btn-sm dropdown-toggle flechita" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class='usrName'><h5 id="usrName"></h5></div>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <li><button class="dropdown-item" id="mi-carrito" type="button">Mi Carrito</button></li>
+                <li><button class="dropdown-item" id="mi-perfil" type="button" >Mi Perfil</button></li>
+                <li><button class="dropdown-item" id="cerrar-sesion" type="button">Cerrar sesión</button></li>
+              </ul>
+            </div>
+
+
           </li>
         </ul>
       </div>
@@ -37,9 +50,188 @@
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
+      <!-- <div class="alert alert-danger text-center" role="alert">
         <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      </div> -->
+
+      <div class="miCarrito" id="miCarrito" >
+        <table class="table table-bordered table-hover" id="tCarrito">
+          <thead >
+            <tr class="bg-light">
+              <th></th>
+              <th></th>
+              <th>Articulo(s)</th>
+              <th>Costo</th>
+              <th width="10%">Cantidad</th>
+              <th>Subtotal</th>
+            </tr>
+          </thead>
+        </table>
       </div>
+      <div class="fd-row-reverse">
+        <button id="confirm-prod" type="button" class="btn btn-success float-end" data-bs-toggle="button" autocomplete="off" style="max-width:200px;"> <img src="https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../releases/preview/2013/png/iconmonstr-checkout-5.png&r=0&g=0&b=0" alt="img-cart" width="15%"> Compra</button>
+
+        <button id="del-prod" type="button" class="btn btn btn-danger float-end" data-bs-toggle="button" autocomplete="off" style="max-width:200px;"><img src="https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../releases/preview/2017/png/iconmonstr-trash-can-30.png&r=0&g=0&b=0" alt="img-bin" width="15%"> Eliminar articulo(s)</button>
+      </div>
+      <br>
+      <div id="ord-comp" class="card border-secondary mb-3 oculto" style="width: 100%;">
+        <div class="card-header text-center"><h3>Orden de compra</h3></div>
+        <div class="card-body text-secondary" style="padding: 0px 30px 30px 30px;">
+          <p class="card-text">
+            <form class="row g-3 needs-validation" id="send">
+              <h4>Tipo de envio</h4>
+              <label class="col-md-8">
+                <input name='send' data-send="premium" value="1.15" type='radio'>Envio Premium de 24 a 48hs (+15%)
+              </label><br>
+              <label>
+                <input name='send' data-send="express" value="1.08" type='radio'>Envio Express de 2 a 3 días (+8%)
+              </label><br>
+              <label>
+                <input name='send' data-send="standard" value="1.02" type='radio'>Envio Standard de 3 a 7 días (+2%)
+              </label>
+              <br><br>
+              <div class="row">
+                <h4 class="col-12">Direccion de envio: </h4>
+                <!-- <label>
+                  <h3 class="col-5 text-center">Calle</h3><input type="text" name="adress" id="adress" class="col-6" required>
+                </label>
+                <h3 class="col-5 text-center">Numero</h3><input type="text" name="number" id="number"  class="col-6" required>
+                <h3 class="col-5 text-center">Esquina</h3><input type="text" name="adress2" id="adress" class="col-6" required>
+                <h3 class="col-5 text-center">Codigo postal</h3><input type="text" name="postal" id="postal"  class="col-6" required>
+              </div> -->
+
+              <form class="row g-3 needs-validation" novalidate>
+                <div class="col-md-4">
+                  <label for="validationCustom01" class="form-label">Calle</label>
+                  <input type="text" class="form-control" name="calle" id="validationCustom01" placeholder="Direción principal" required>
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                  <div class="invalid-feedback">
+                    Porfavor ingrese la calle principal de su domicilio
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <label for="validationCustom02" class="form-label">Esquina</label>
+                  <input type="text" class="form-control" name="esq" id="validationCustom02" required>
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                  <div class="invalid-feedback">
+                    ingrese la calle transversal mas cercana
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <label for="validationCustom03" class="form-label">Numero</label>
+                  <input type="number" class="form-control" name="numDor" id="validationCustom03" placeholder="Numero de puerta" required>
+                  <div class="invalid-feedback">
+                    Porfavor ingrese el numero de puerta
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="validationCustom03" class="form-label">Ciudad</label>
+                  <input type="text" class="form-control" name="cty" id="validationCustom04" required>
+                  <div class="invalid-feedback">
+                    Please provide a valid city.
+                  </div>
+                </div>
+                <!-- <div class="col-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                    <label class="form-check-label" for="invalidCheck">
+                      Agree to terms and conditions
+                    </label>
+                    <div class="invalid-feedback">
+                      You must agree before submitting.
+                    </div>
+                  </div>
+                </div> -->
+                <div class="clo-12 mx-auto">
+                  <button id="buy-prod" class="btn btn-outline-secondary" type="submit"><img src="https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../releases/preview/2013/png/iconmonstr-checkout-8.png&r=0&g=0&b=0" alt="img-cart" width="10%"> Continuar</button>
+                  <!-- <button id="buy-prod" type="submit" class="btn btn-success float-end" data-bs-toggle="button" style="max-width:250px;"> <img src="https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../releases/preview/2013/png/iconmonstr-checkout-8.png&r=0&g=0&b=0" alt="img-cart" width="15%"> Continuar</button> -->
+                </div>
+              </form>
+            </form>
+        </div>
+        
+          <hr>
+        <div class="card-body text-secondary row" id="costos">
+          <div class="row border-bottom">
+            <div class="col-4">Subtotal</div>
+            <div class="col-4"></div>
+            <div id="subtot" class="col-4"></div>
+          </div>
+          <div class="row border-bottom">
+            <div class="col-4">Costo de envio</div>
+            <div class="col-4"></div>
+            <div id="costSend" class="col-4 align-items-center"></div>
+          </div><br>
+          <div class="row border-bottom">
+            <div class="col-4">Total</div>
+            <div class="col-4"></div>
+            <div  id="tot" class="col-4 align-items-center"></div>
+          </div>
+        </div>
+      </p>
+      <button type="button" id="payBy" class="btn btn-outline-primary d-none mx-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Medio de pago
+      </button>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Forma de pago</h5>
+              <button type="button" id="closebtn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <hr>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="RadioDefault1" checked>
+                <label class="form-check-label" for="RadioDefault1">
+                  Tarjeta de credito
+                </label>
+                <br>
+                <form class="row g-3">
+                  <div class="col-md-12">
+                    <label for="inputCardNum" class="form-label">Numero de tarjeta</label>
+                    <input type="number" class="form-control" id="inputCardNum">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputCSeg" class="form-label">Codigo de seguridad</label>
+                    <input type="number" class="form-control" id="inputCSeg"  min="0">
+                  </div>
+                  <div class="col-6">
+                    <label for="inputDateOff" class="form-label">Vencimiento (MM/AA)</label>
+                    <input type="text" class="form-control" id="inputDateOff" maxlength="5">
+                  </div>
+                </form>
+              </div>
+              <hr>
+              <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="RadioDefault2">
+                <label class="form-check-label" for="RadioDefault2">
+                  Transferencia bancaria
+                </label>
+                <div class="col-12">
+                  <label for="inputBankCount" class="form-label">Numero de cuenta</label>
+                  <input type="number" class="form-control" id="inputBankCount" disabled>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" id="confirmPay" class="btn btn-primary">Confirmar medio de pago</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button id="finishBuy" type="button" class="btn btn-outline-success d-none">Finalizar compra</button>
+      </div>
+      </div>
+    </div>
+    <div id="succsesAlert" class="alert alert-success d-none" role="alert">
+      Su compra se realizo con exito!
     </div>
   </main>
   <footer class="text-muted">
