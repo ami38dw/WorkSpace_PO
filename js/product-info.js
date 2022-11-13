@@ -14,12 +14,10 @@ let puntuacion = document.getElementById('cmmPuntuacion');
 let fecha = new Date();
 let productInfo = undefined;
 let prodRelacionados = document.getElementById('prod-related');
-// console.log(prodRelacionados);
 
 function mostrarEstrellas(score) {
     for (let i=1; i<=score; i++ ){
         estrellasString += '<span class="fa fa-star checked"></span>'
-        // console.log(i)
     }
     
 };
@@ -65,7 +63,6 @@ function setProdID(id) {
 function mostrarProdRelacionados(data){
     let relToAppend = `<h3>Productos relacionados</h3>`;
     data.relatedProducts.forEach(element => {
-        // console.log(data);
         relToAppend += `
         <div class='card prodRel' id='prod-Rel-${element.id}' onclick="setProdID(${element.id})"> 
         <h4>${element.name}</h4>
@@ -106,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch(PRODUCT_URL_COMMENTS)
         .then(response => response.json())
         .then(cmmt => {
-            // console.log(cmmt)
             comentarios = cmmt
             mostrarComentarios(comentarios);
         });

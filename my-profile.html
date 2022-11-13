@@ -63,11 +63,44 @@
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+    <div class='formDiv'>
+      <form class="row g-3" action="#">
+        <div class="col-md-6">
+          <label for="nombreU1" class="form-label">Primer Nombre *</label>
+          <input type="text" class="form-control" id="nombreU1" required>
+        </div>
+        <div class="col-md-6">
+          <label for="nombreU2" class="form-label">Segundo Nombre</label>
+          <input type="text" class="form-control" id="nombreU2">
+        </div>
+        <div class="col-md-6">
+          <label for="apellidoU1" class="form-label">Primer Apellido *</label>
+          <input type="text" class="form-control" id="apellidoU1" required>
+        </div>
+        <div class="col-md-6">
+          <label for="apellidoU2" class="form-label">Segundo apellido</label>
+          <input type="text" class="form-control" id="apellidoU2">
+        </div>
+        <div class="col-md-6">
+          <label for="inputEmail" class="form-label">Email *</label>
+          <input type="email" class="form-control" id="inputEmail" required>
+        </div>
+        <div class="col-md-6">
+          <label for="usuarioTel" class="form-label">Telefono de contacto</label>
+          <input type="number" class="form-control" id="usuarioTel" min="0">
+        </div>
+        
+        <div class="col-12">
+          <span class="text-muted">Todos los campos con ( * ) son obligatorios</span><br>
+          <button type="submit" class="btn btn-primary" id="btnSubmit">Actualizar perfil</button>
+          <button type="submit" class="btn btn-primary d-none" id="btnSubmit2">Actualizar perfil</button>
+        </div>
+      </form>
     </div>
+    <div id="succsesAlert" class="alert alert-success d-none" role="alert">
+      Su perfil se actualizo con exito!
+    </div>
+
   </main>
   <footer class="text-muted">
     <div class="container">

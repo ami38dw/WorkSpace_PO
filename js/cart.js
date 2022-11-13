@@ -31,17 +31,16 @@ let payBay = document.getElementById('payBy');
 let divSuccsesAlert = document.getElementById('succsesAlert');
 let payment = false;
 let formConfirm = false;
+let arrayIDs = [];
 
 
 function multCost(cost,id) {
     let inp = document.querySelector(`#amount-`+id);
     let r = cost * inp.value
-    // console.log('$'+r);
     document.querySelector(`#subT-`+id).innerHTML = r;
 };
 
 function mostrarProd(carrito){
-    // console.log(carrito);
     let toApend = ``; 
     for (i=0; i < carrito.length; i++) {
         let subT = `${carrito[i].unitCost}` * `${carrito[i].count}`;
@@ -59,10 +58,27 @@ function mostrarProd(carrito){
     };
     divCarrito.innerHTML += toApend
 };
-
 function borrarProd(){
-
+    agregarProdSelec();
+    console.log(prodSelected)
+    let miCarritoChico = undefined;
+    for (artc of prodSelected){
+        for(arct of prodSelected){
+            arrayIDs.push(arct.id)
+        }
+        let miCarrito = JSON.parse(localStorage.getItem('miCarrito'));
+        for (let indi=0; indi < arrayIDs.length; indi++){
+            miCarritoChico = miCarrito.filter(item => item.id !== arrayIDs[indi])
+            arrayIDs.shift()
+        }
+    }
+    divCarrito.innerHTML = '';
+    localStorage.setItem('miCarrito', JSON.stringify(miCarritoChico));
+    mostrarProd(miCarritoChico);
 };
+delBtn.addEventListener('click',()=>{
+    borrarProd()
+})
 fetch(CART_INFO_URL_USER)
 .then(response => response.json())
 .then(data => {
@@ -81,7 +97,6 @@ fetch(CART_INFO_URL_USER)
 function agregarProdSelec (){
     prodSelected = [];
     for (let i = 0; i < divCarrito.childNodes[3].children.length; i++) {
-        console.log(divCarrito.childNodes[3].children[i])
         if (divCarrito.childNodes[3].children[i].cells[0].firstChild.checked){
             listaProducto[i].count = divCarrito.childNodes[3].children[i].cells[4].children[0].value;
             prodSelected.push(listaProducto[i])  
@@ -102,7 +117,6 @@ buyBtn.addEventListener('click', (e) => {
     console.log(tipoEnvio)
     let conf = false;
     if(tipoEnvio.value === '' || valCust1.value === ''|| valCust2.value === ''|| valCust3.value === ''|| valCust4.value === ''){
-        // e.preventDefault();
     }else {
         e.preventDefault();
         costos();
@@ -127,7 +141,6 @@ function costos(){
        }else {
         sumParcial += ((prod.count)*(prod.unitCost))
        }
-    //    console.log(sumParcial)
     }
     subtot.innerHTML = `$ <span id="spanSubTot">${sumParcial}</span>`
 
@@ -194,4 +207,3 @@ btnTerminarComp.addEventListener('click', ()=>{
         ordenComp.classList.toggle('oculto');
     }
 })
-// setTimeout(vanish, 3000) 

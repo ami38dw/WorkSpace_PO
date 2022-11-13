@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function(){
     function showArtcs(list){
         divCont.innerHTML = ``
         for (artc of list) {
-            // console.log(artc)
             divCont.innerHTML += `
             <div class="card" onclick="setProdID(${artc.id})">
                 <img class='cardImg' src="${artc.image}">
@@ -64,7 +63,6 @@ document.addEventListener('DOMContentLoaded', function(){
         if ((inpmax.value !== undefined) || (inpmin.value !== undefined)){
         e.preventDefault();
         productosArray = JSON.parse(localStorage.getItem('productosArray'));
-        // console.log(productosArrayFiltrado)
         productosArrayFiltrado = productosArray.filter(prod => ((prod.cost >= inpmin.value) ||
         !inpmin.value) && ((prod.cost <= inpmax.value) || (!inpmax.value)))
         showArtcs(productosArrayFiltrado)
@@ -130,10 +128,6 @@ document.addEventListener('DOMContentLoaded', function(){
             ordenCreciente(productosArray)
         };        
     });
-
-    // productos.forEach(addEventListener('click',(e) => {
-    //     console.log(e)
-    // }))
 });
 
 // -----------------------------------------------------------------------------------
@@ -146,5 +140,9 @@ fetch(CART_INFO_URL_USER)
 .then(data => {
     console.log(data);
     miCarrito = data.articles;
-    localStorage.setItem('miCarrito', JSON.stringify(miCarrito))
+    if(localStorage.getItem('miCarrito')){
+
+    }else{
+        localStorage.setItem('miCarrito', JSON.stringify(miCarrito))
+    }
 });

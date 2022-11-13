@@ -284,3 +284,7 @@ a.custom-card:hover {
 .scoreStars{
   margin: 5px 5px 5px 10%;
 }
+.formDiv{
+  width: 90%;
+  margin: 30px auto;
+}

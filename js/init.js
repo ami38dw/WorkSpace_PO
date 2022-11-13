@@ -60,5 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.location = 'index.html';
     localStorage.setItem('usrName', '');
     localStorage.setItem('miCarrito', '');
+    localStorage.setItem('loged', false);
   });
 });
